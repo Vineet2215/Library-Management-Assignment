@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Management System</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  
+  <style>
+    .navbar {
+      background-color: #f8f9fa; /* Light grey background for navbar */
+      border-bottom: 1px solid #e7e7e7;
+    }
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    .navbar-nav .nav-item .nav-link {
+      color: #007bff;
+    }
+    .navbar-nav .nav-item .nav-link:hover {
+      color: #0056b3;
+    }
+    .alert {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Library</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/books">Books</a>
+        </li>
+        <% if (!user) { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/auth/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/auth/signup">Signup</a>
+          </li>
+        <% } else { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/auth/logout">Logout</a>
+          </li>
+        <% } %>
+      </ul>
+    </div>
+  </nav>
+
+  <% if (!user) { %>
+    <div class="container">
+      <div class="alert alert-warning text-center">
+        You are not logged in. Please <a href="/auth/login" class="alert-link">login</a> or <a href="/auth/signup" class="alert-link">signup</a>.
+      </div>
+    </div>
+  <% } %>
+</body>
+</html>
